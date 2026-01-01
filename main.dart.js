@@ -90646,7 +90646,7 @@ agf(){this.O0()
 A.tD(B.b0,new A.am6(this),t.P)},
 ahM(){var s=this.y
 if(s==null)return
-$.aGh().hB(new A.afz("The winner is: "+s+"!\n\nRace with Random Race: https://random-race.web.app"))},
+$.aGh().hB(new A.afz("The winner is: "+s+"!\n\nRace with Random Race: https://wellesliu.github.io/random-race.github.io/"))},
 pM(a){return this.adm(a)},
 adm(a){var s=0,r=A.I(t.H),q
 var $async$pM=A.J(function(b,c){if(b===1)return A.F(c,r)
