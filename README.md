@@ -8,7 +8,7 @@ A fun decision-making app featuring animated dinosaur races! Let your dinos deci
 
 ## Download
 
-<a href="https://apps.apple.com/app/random-race-decision-maker/id6503992252">
+<a href="https://apps.apple.com/us/app/random-race-decision-maker/id6450887585">
   <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" height="50">
 </a>
 
@@ -28,6 +28,6 @@ Random Race turns decision-making into an entertaining experience. Add your opti
 
 ## Links
 
-- [App Store](https://apps.apple.com/app/random-race-decision-maker/id6503992252)
+- [App Store](https://apps.apple.com/us/app/random-race-decision-maker/id6450887585)
 - [Google Play](https://play.google.com/store/apps/details?id=com.sopivasti.randomrace)
 - [Website](https://sopivasti.com)
