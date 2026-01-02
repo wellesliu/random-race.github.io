@@ -61,35 +61,77 @@
     .app-links a img {
       height: 40px;
     }
+    /* Light theme (default) */
+    .badge-light { display: inline; }
+    .badge-dark { display: none; }
+
+    /* Dark theme */
+    [data-theme="dark"] body,
+    [data-theme="dark"] html {
+      background-color: #1a1a1a;
+    }
+    [data-theme="dark"] #loading-text {
+      color: #aaa;
+    }
+    [data-theme="dark"] .spinner {
+      border-color: #333;
+      border-top-color: #2196F3;
+    }
+    [data-theme="dark"] .badge-light { display: none; }
+    [data-theme="dark"] .badge-dark { display: inline; }
+
+    /* Auto theme based on system preference */
     @media (prefers-color-scheme: dark) {
-      html, body {
+      [data-theme="auto"] body,
+      [data-theme="auto"] html {
         background-color: #1a1a1a;
       }
-      #loading-text {
+      [data-theme="auto"] #loading-text {
         color: #aaa;
       }
-      .spinner {
+      [data-theme="auto"] .spinner {
         border-color: #333;
         border-top-color: #2196F3;
       }
-      .badge-light {
-        display: none;
-      }
-      .badge-dark {
-        display: inline;
-      }
+      [data-theme="auto"] .badge-light { display: none; }
+      [data-theme="auto"] .badge-dark { display: inline; }
     }
-    @media (prefers-color-scheme: light) {
-      .badge-light {
-        display: inline;
-      }
-      .badge-dark {
-        display: none;
-      }
+
+    /* Theme toggle button */
+    #theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: rgba(128, 128, 128, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #theme-toggle:hover {
+      background: rgba(128, 128, 128, 0.3);
+    }
+    .icon-light { display: inline; }
+    .icon-dark { display: none; }
+    [data-theme="dark"] .icon-light { display: none; }
+    [data-theme="dark"] .icon-dark { display: inline; }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="auto"] .icon-light { display: none; }
+      [data-theme="auto"] .icon-dark { display: inline; }
     }
   </style>
 </head>
 <body>
+  <button id="theme-toggle" aria-label="Toggle dark mode">
+    <span class="icon-light">&#9728;&#65039;</span>
+    <span class="icon-dark">&#127769;</span>
+  </button>
   <div id="loading">
     <div class="spinner"></div>
     <div id="loading-text">Loading...</div>
@@ -104,5 +146,29 @@
     </div>
   </div>
   <script src="flutter_bootstrap.js" async></script>
+  <script>
+    (function() {
+      const toggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+
+      // Load saved theme or default to auto
+      const savedTheme = localStorage.getItem('theme') || 'auto';
+      html.setAttribute('data-theme', savedTheme);
+
+      toggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme');
+        let next;
+        if (current === 'auto') {
+          next = 'dark';
+        } else if (current === 'dark') {
+          next = 'light';
+        } else {
+          next = 'auto';
+        }
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
 </body>
 </html>
